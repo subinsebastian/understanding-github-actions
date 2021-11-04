@@ -1,5 +1,5 @@
 name: Dispatcher
-on: push
+on: [push, pull_request]
 
 jobs:
   dispatch-event:
