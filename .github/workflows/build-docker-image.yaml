@@ -53,6 +53,8 @@ jobs:
         # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
+      - name: Display the pushed image tags
+        run: echo "subinsebastian/learning-ui:dev-${{ steps.context.outputs.commit_sha }}, subinsebastian/learning-ui"
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
