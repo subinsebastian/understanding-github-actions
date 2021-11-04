@@ -5,6 +5,14 @@ jobs:
   dispatch-event:
     runs-on: ubuntu-latest
     steps:
+      - name: Extract branch_name and commit_sha
+        shell: bash
+        id: context
+        run: |
+          echo "##[set-output name=branch_name;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "##[set-output name=commit_sha;]$(echo ${GITHUB_SHA: -7})"
+      - name: Display the pushed image tags
+        run: echo "subinsebastian/learning-ui:dev-${{ steps.context.outputs.commit_sha }}, subinsebastian/learning-ui"
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
