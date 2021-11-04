@@ -49,7 +49,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Display the pushed image tags
-        run: echo "subinsebastian/learning-ui:dev-${{ steps.context.outputs.commit_sha }}, subinsebastian/learning-ui"
+        run: echo "(${{ steps.context.outputs.branch_name }}) - images pushed are subinsebastian/learning-ui:dev-${{ steps.context.outputs.commit_sha }}, subinsebastian/learning-ui"
         # This ugly bit is necessary if you don't want your cache to grow forever
         # till it hits GitHub's limit of 5GB.
         # Temp fix
